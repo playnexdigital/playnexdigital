@@ -4,178 +4,152 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sell Your Music | Playnex Digital</title>
-  <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #000;
-      color: #fff;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
 
     header {
       position: fixed;
-      top: 0;
-      left: 0;
+      top: 0; left: 0;
       width: 100%;
-      background: #000;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.6);
       z-index: 999;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 5vw;
-      transition: background 0.3s ease;
-    }
-
-    header.scrolled {
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(10px);
+      padding: 10px 5vw;
+      border-bottom: 1px solid rgba(0, 221, 255, 0.2);
     }
 
     .logo img {
-      height: 66px;
+      height: 74px;
+      max-width: 100%;
     }
 
     nav {
       display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-    }
-
-    nav ul li a {
+    nav a {
       font-size: 16px;
-      font-weight: 400;
-      color: #fff;
-      transition: color 0.3s ease;
+      font-weight: 500;
+      transition: all 0.3s ease;
     }
 
-    nav ul li a:hover,
-    nav ul li a:focus,
-    nav ul li a:active {
-      color: #00ddff;
+    nav a:hover { color: #00ddff; }
+
+    .btn-login,
+    .btn-signup {
+      padding: 7px 16px;
+      font-weight: 500;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-login {
+      border: 1px solid #00ddff;
+      background: transparent;
+      color: #fff;
+    }
+
+    .btn-signup {
+      background: #00ddff;
+      color: #000;
+      border: none;
+    }
+
+    .btn-login:hover {
+      transform: scale(1.05);
+      color: inherit;
+    }
+
+    .btn-signup:hover {
+      transform: scale(1.05);
+      color: #000;
     }
 
     .hamburger {
       display: none;
-      flex-direction: column;
+      font-size: 28px;
+      color: #fff;
+      background: none;
+      border: none;
       cursor: pointer;
-      width: 25px;
-      height: 18px;
-      justify-content: space-between;
       z-index: 1001;
     }
 
-    .hamburger span {
-      height: 3px;
-      width: 100%;
-      background: #fff;
-      transition: 0.3s ease;
-    }
-
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translateY(7px);
-    }
-
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translateY(-7px);
-    }
-
     @media (max-width: 768px) {
-      .hamburger { display: flex; }
+      .hamburger { display: block; }
 
       nav {
         position: absolute;
         top: 100%;
         left: 0;
-        width: 100%;
+        width: 100vw;
         background: rgba(0, 0, 0, 0.95);
+        border-bottom: 1px solid rgba(0, 221, 255, 0.2);
         max-height: 0;
         overflow: hidden;
         flex-direction: column;
         opacity: 0;
         transition: all 0.4s ease;
-        padding: 0 5vw;
+        padding: 0;
+        align-items: center;
       }
 
       nav.show {
-        max-height: 500px;
-        padding: 20px 5vw;
+        max-height: 100vh;
         opacity: 1;
+        padding: 10px 0;
       }
 
-      nav ul {
-        flex-direction: column;
-        gap: 15px;
-        align-items: flex-start;
+      nav a {
+        margin: 1px 0;
+        font-size: 16px;
       }
 
-      .logo img { height: 56px; }
+      .btn-login,
+      .btn-signup {
+        width: 120px;
+        text-align: center;
+        padding: 8px;
+        margin: 5px 0;
+      }
+
+      .logo img {
+        height: 68px;
+      }
     }
 
-    main {
-      padding-top: 100px;
-    }
-
+    main { padding-top: 100px; }
     section {
       padding: 50px 5vw;
       max-width: 1200px;
       margin: auto;
-      opacity: 0;
-      transform: translateY(60px);
-      transition: all 0.7s ease-out;
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    h1, h2, h3 {
-      font-family: 'Oswald', sans-serif;
-      text-transform: uppercase;
-      margin-bottom: 20px;
     }
 
     h1 {
-      font-size: 42px;
       text-align: center;
       color: #00ddff;
-      margin-top: -20px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 40px;
+      margin-bottom: 15px;
     }
 
-    h2 {
-      font-size: 24px;
-      text-align: center;
-    }
-
-    h3 {
-      font-size: 20px;
-    }
+    h1 span { color: #fff; }
 
     p {
-      font-size: 16px;
-      color: #ccc;
       text-align: center;
+      color: #ccc;
+      font-size: 16px;
+      margin-bottom: 10px;
     }
 
     .btn {
@@ -186,10 +160,13 @@
       border-radius: 5px;
       display: inline-block;
       margin-top: 15px;
+      transition: all 0.3s ease;
     }
 
     .btn:hover {
       background: #00bbdd;
+      color: #000;
+      transform: scale(1.05);
     }
 
     .center-btn {
@@ -233,28 +210,98 @@
       text-align: center;
     }
 
+    .footer-separator {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin-top: 60px;
+    }
+
     @media(min-width: 768px) {
       h1 { font-size: 52px; }
       .steps { flex-direction: row; }
       .step { flex: 1; }
-      .grid-4 {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media(min-width: 1024px) {
-      .grid-4 {
-        grid-template-columns: repeat(4, 1fr);
+      .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    }
+    footer {
+      background: #0d0d14;
+      color: #aaa;
+      padding: 40px 5vw 0;
+      font-size: 14px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 60px;
+      text-align: left;
+    }
+
+    .footer-column h4 {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 15px;
+    }
+
+    .footer-column a {
+      display: block;
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 8px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-column a:hover {
+      color: #fff;
+    }
+
+    .footer-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.08);
+      margin: 30px 0 20px;
+    }
+
+    .footer-credit {
+      text-align: center;
+      font-size: 13.5px;
+      color: #bbb;
+      padding: 0 0 30px;
+    }
+
+    @media(max-width: 768px) {
+      .footer-container {
+        flex-direction: column;
+        gap: 30px;
+        align-items: flex-start;
       }
     }
 
-    footer {
-      text-align: center;
-      background: #111;
-      padding: 20px 5vw;
-      font-size: 14px;
-      color: #aaa;
-      margin-top: 60px;
+    [data-aos] {
+      opacity: 0;
+      transition-property: transform, opacity;
+      transition-duration: 0.6s;
+      transition-timing-function: ease;
+    }
+
+    [data-aos].aos-animate {
+      opacity: 1;
+      transform: none;
+    }
+
+    [data-aos="fade-up"] {
+      transform: translateY(40px);
+    }
+
+    [data-aos="fade-up"].aos-animate {
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -266,28 +313,27 @@
         <img src="images/logo.png" alt="Playnex Digital Logo">
       </a>
     </div>
-    <div class="hamburger" onclick="toggleMenu(this)">
-      <span></span><span></span><span></span>
-    </div>
+    <button class="hamburger" id="menuToggle" onclick="toggleMenu()">☰</button>
     <nav id="mobileMenu">
-      <ul>
-        <li><a href="#">Sell Your Music</a></li>
-        <li><a href="#">Artist Services</a></li>
-        <li><a href="#">Pricing</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
+      <a href="https://www.spmusiczone.com/sell-your-music">Sell Your Music</a>
+      <a href="https://www.spmusiczone.com/artist-services">Artist Services</a>
+      <a href="https://www.spmusiczone.com/pricing">Pricing</a>
+      <a href="https://www.spmusiczone.com/about-us">About Us</a>
+      <a href="https://www.spmusiczone.com/contact-us">Contact Us</a>
+      <a href="https://www.spmusiczone.com/login" class="btn-login">Login</a>
+      <a href="https://www.spmusiczone.com/signup" class="btn-signup">Sign Up</a>
     </nav>
   </header>
 
   <main>
-    <section>
-      <h1>Sell <span style="color:#fff">Your Music</span> Online</h1>
+    <section data-aos="fade-up">
+      <h1>Sell <span>Your Music</span> Online</h1>
+      <p>Distribute your music to 150+ stores like Spotify, Apple Music & more.</p>
       <div class="center-btn"><a class="btn" href="#">SIGN UP NOW</a></div>
     </section>
 
-    <section>
-      <h2>How to Sell Your Music Online</h2>
+    <section data-aos="fade-up">
+      <h2 style="text-align:center;">How to Sell Your Music Online</h2>
       <p>Follow these easy steps to get started:</p>
       <div class="steps">
         <div class="step">
@@ -306,13 +352,13 @@
       </div>
     </section>
 
-    <section class="info-section">
+    <section class="info-section" data-aos="fade-up">
       <h2>Upload Music and Get Paid</h2>
       <p>Whether you’re a beginner or pro, Playnex Digital helps you sell your music worldwide. Just create an account, upload your track, and we handle the rest.</p>
       <div class="center-btn"><a class="btn" href="#">SIGN UP NOW</a></div>
     </section>
 
-    <section>
+    <section data-aos="fade-up">
       <div class="grid-4">
         <div class="grid-box">
           <h3>Global Music Distribution</h3>
@@ -335,14 +381,47 @@
     </section>
   </main>
 
+  <div class="footer-separator"></div>
+
   <footer>
-    <p>© 2025 Playnex Digital. All rights reserved.</p>
+    <div class="footer-container">
+      <div class="footer-column">
+        <h4>Company</h4>
+        <a href="https://www.spmusiczone.com/about-us">About Us</a>
+        <a href="https://www.spmusiczone.com/contact-us">Contact Us</a>
+      </div>
+      <div class="footer-column">
+        <h4>Services</h4>
+        <a href="https://www.spmusiczone.com/sell-your-music">Sell Your Music</a>
+        <a href="https://www.spmusiczone.com/artist-services">Artist Services</a>
+        <a href="https://www.spmusiczone.com/signup">Sign Up</a>
+        <a href="https://www.spmusiczone.com/login">Login</a>
+      </div>
+      <div class="footer-column">
+        <h4>Legal</h4>
+        <a href="https://www.sulexamusic.com/terms-and-condition">Terms & Conditions</a>
+        <a href="https://www.sulexamusic.com/privacy-policy">Privacy Policy</a>
+        <a href="https://www.sulexamusic.com/refund-policy">Refund Policy</a>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-credit">
+      © 2025 Playnex Digital. All rights reserved.
+    </div>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    function toggleMenu(el) {
-      el.classList.toggle("active");
-      document.getElementById("mobileMenu").classList.toggle("show");
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+
+    function toggleMenu() {
+      const nav = document.getElementById("mobileMenu");
+      const btn = document.getElementById("menuToggle");
+      nav.classList.toggle("show");
+      btn.textContent = nav.classList.contains("show") ? "✕" : "☰";
     }
 
     window.addEventListener("scroll", () => {
@@ -352,21 +431,12 @@
       } else {
         header.classList.remove("scrolled");
       }
-
-      document.querySelectorAll("section").forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          sec.classList.add("visible");
-        }
-      });
     });
 
-    window.addEventListener("load", () => {
-      document.querySelectorAll("section").forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) {
-          sec.classList.add("visible");
-        }
+    document.querySelectorAll("#mobileMenu a").forEach(link => {
+      link.addEventListener("click", () => {
+        document.getElementById("mobileMenu").classList.remove("show");
+        document.getElementById("menuToggle").textContent = "☰";
       });
     });
   </script>

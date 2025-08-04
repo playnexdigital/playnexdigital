@@ -4,72 +4,366 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Artist Services | Playnex Digital</title>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins&display=swap" rel="stylesheet">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <style>
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0;
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body { font-family: 'Poppins', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 5vw;
+      border-bottom: 1px solid rgba(0, 221, 255, 0.2);
     }
+
+    .logo img {
+      height: 74px;
+      max-width: 100%;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover { color: #00ddff; }
+
+    .btn-login,
+    .btn-signup {
+      padding: 7px 16px;
+      font-weight: 500;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-login {
+      border: 1px solid #00ddff;
+      background: transparent;
+      color: #fff;
+    }
+
+    .btn-signup {
+      background: #00ddff;
+      color: #000;
+      border: none;
+    }
+
+    .btn-login:hover {
+      transform: scale(1.05);
+      color: inherit;
+    }
+
+    .btn-signup:hover {
+      transform: scale(1.05);
+      color: #000;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 28px;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100vw;
+        background: rgba(0, 0, 0, 0.95);
+        border-bottom: 1px solid rgba(0, 221, 255, 0.2);
+        max-height: 0;
+        overflow: hidden;
+        flex-direction: column;
+        opacity: 0;
+        transition: all 0.4s ease;
+        padding: 0;
+        align-items: center;
+      }
+
+      nav.show {
+        max-height: 100vh;
+        opacity: 1;
+        padding: 10px 0;
+      }
+
+      nav a {
+        margin: 1px 0;
+        font-size: 16px;
+      }
+
+      .btn-login,
+      .btn-signup {
+        width: 120px;
+        text-align: center;
+        padding: 8px;
+        margin: 5px 0;
+      }
+
+      .logo img {
+        height: 68px;
+      }
+    }
+
+    main { padding-top: 100px; }
     section {
-      padding: 50px 20px;
+      padding: 50px 5vw;
       max-width: 1200px;
       margin: auto;
     }
-    h1, h2 {
+
+    h1 {
+      text-align: center;
+      color: #00ddff;
       font-family: 'Oswald', sans-serif;
-      text-transform: uppercase;
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    h1 span { color: #fff; }
+
+    h2 {
+      font-size: 28px;
+      font-family: 'Oswald', sans-serif;
+      color: #00ddff;
       margin-bottom: 20px;
     }
-    h1 {
-      font-size: 42px;
-      color: #00ddff;
-    }
-    h2 {
-      font-size: 24px;
-    }
-    ul {
-      padding-left: 20px;
-    }
-    li {
+
+    p {
+      text-align: center;
+      color: #ccc;
+      font-size: 16px;
       margin-bottom: 10px;
     }
+
     .btn {
-      display: inline-block;
-      margin-top: 20px;
       background: #00ddff;
       color: #000;
       padding: 12px 24px;
-      border-radius: 5px;
       font-weight: bold;
-      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 15px;
+      transition: all 0.3s ease;
     }
+
     .btn:hover {
       background: #00bbdd;
+      color: #000;
+      transform: scale(1.05);
+    }
+
+    .center-btn {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .grid-box {
+      background: #111;
+      padding: 25px;
+      border-radius: 10px;
+      border-left: 4px solid #00ddff;
+    }
+
+    @media(min-width: 768px) {
+      h1 { font-size: 52px; }
+      .grid-2 { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
 
-  <section>
-    <h1>Artist Services</h1>
-    <p>Playnex Digital offers professional services to help artists grow their brand and reach wider audiences.</p>
+  <header id="siteHeader">
+    <div class="logo">
+      <a href="/">
+        <img src="images/logo.png" alt="Playnex Digital Logo">
+      </a>
+    </div>
+    <button class="hamburger" id="menuToggle" onclick="toggleMenu()">☰</button>
+    <nav id="mobileMenu">
+      <a href="https://www.spmusiczone.com/sell-your-music">Sell Your Music</a>
+      <a href="https://www.spmusiczone.com/artist-services">Artist Services</a>
+      <a href="https://www.spmusiczone.com/pricing">Pricing</a>
+      <a href="https://www.spmusiczone.com/about-us">About Us</a>
+      <a href="https://www.spmusiczone.com/contact-us">Contact Us</a>
+      <a href="https://www.spmusiczone.com/login" class="btn-login">Login</a>
+      <a href="https://www.spmusiczone.com/signup" class="btn-signup">Sign Up</a>
+    </nav>
+  </header>
 
-    <h2>Our Services Include:</h2>
-    <ul>
-      <li>Music Distribution to 150+ Platforms</li>
-      <li>Playlist Pitching</li>
-      <li>Custom Artist Profile</li>
-      <li>YouTube Content ID Monetization</li>
-      <li>Lyrics Publishing</li>
-      <li>Spotify Artist Verification</li>
-      <li>Support for Releases & Royalties</li>
-    </ul>
+  <main>
+    <section data-aos="fade-up">
+      <h1>Artist <span>Services</span></h1>
+      <p>Grow your music career with Playnex Digital's professional tools, distribution, and artist support.</p>
+      <div class="center-btn"><a class="btn" href="#">Get Started</a></div>
+    </section>
 
-    <a href="#" class="btn">Explore All Services</a>
-  </section>
+    <section data-aos="fade-up">
+      <div class="grid-2">
+        <div class="grid-box">
+          <h3>YouTube Content ID</h3>
+          <p>Protect your music on YouTube with automatic fingerprinting and earn from any video using your audio.</p>
+        </div>
+        <div class="grid-box">
+          <h3>Callertunes (CBRT)</h3>
+          <p>Enable your music as a caller tune on Airtel and Jio to reach millions of users across India.</p>
+        </div>
+      </div>
+    </section>
+    <section data-aos="fade-up">
+      <div class="grid-2">
+        <div class="grid-box">
+          <h3>Your Self – Releasing Music Partner</h3>
+          <p>Playnex Digital is a digital music distribution platform dedicated to empowering artists, producers, and labels by providing them with the tools and support needed to distribute their music globally.</p>
+        </div>
+        <div class="grid-box">
+          <h3>Tailored Music Distribution</h3>
+          <p>With fast, reliable delivery, transparent revenue tracking, and tailored support, our service ensures your music reaches the right audience while you retain full control and maximize your earnings.</p>
+        </div>
+      </div>
+    </section>
 
-</body>
+    <section class="info-section" data-aos="fade-up">
+      <h2>Our Mission</h2>
+      <p>We aim to bridge the gap between artists and the global music industry by offering affordable, transparent, and efficient music distribution services. Every artist deserves to be heard — we help make that happen.</p>
+    </section>
+
+    <section data-aos="fade-up">
+      <h2 style="text-align:center;">150+ Digital Stores</h2>
+      <p style="text-align:center;">Distribute to Spotify, Apple Music, Amazon, YouTube Music, Facebook, Instagram & more.</p>
+      <div class="center-btn"><a class="btn" href="#">View All Platforms</a></div>
+    </section>
+
+    <section data-aos="fade-up">
+      <div class="grid-2">
+        <div class="grid-box">
+          <h3>Spotify & Apple Music</h3>
+          <p>Your music is available on the most popular streaming platforms across the globe.</p>
+        </div>
+        <div class="grid-box">
+          <h3>Monetize on Social Platforms</h3>
+          <p>Enable your tracks for use across Instagram, Facebook, TikTok & more to maximize revenue.</p>
+        </div>
+      </div>
+    </section>
+
+    <section data-aos="fade-up">
+      <div class="grid-2">
+        <div class="grid-box">
+          <h3>Revenue Transparency</h3>
+          <p>Track your music earnings clearly and get paid directly into your account—no hidden cuts.</p>
+        </div>
+        <div class="grid-box">
+          <h3>Global Reach</h3>
+          <p>Your music reaches over 200 countries and territories, giving your career true global exposure.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section" data-aos="fade-up">
+      <h2>Real Artists. Real Music.</h2>
+      <p>Join 200+ artists and 2000+ tracks already distributed via Playnex Digital. Get your music heard now.</p>
+      <div class="grid-2">
+        <div class="grid-box">
+          <h3>200+ Independent Artists</h3>
+          <p>From India to the world — grow with our vibrant artist community and reach new fans everywhere.</p>
+        </div>
+        <div class="grid-box">
+          <h3>2,000+ Tracks Released</h3>
+          <p>We’ve already helped release thousands of tracks across major streaming platforms. Yours could be next.</p>
+        </div>
+      </div>
+      <div class="center-btn"><a class="btn" href="#">Distribute Now</a></div>
+    </section>
+
+    <div class="footer-separator"></div>
+    <footer>
+      <div class="footer-container">
+        <div class="footer-column">
+          <h4>Company</h4>
+          <a href="https://www.spmusiczone.com/about-us">About Us</a>
+          <a href="https://www.spmusiczone.com/contact-us">Contact Us</a>
+        </div>
+        <div class="footer-column">
+          <h4>Services</h4>
+          <a href="https://www.spmusiczone.com/sell-your-music">Sell Your Music</a>
+          <a href="https://www.spmusiczone.com/artist-services">Artist Services</a>
+          <a href="https://www.spmusiczone.com/signup">Sign Up</a>
+          <a href="https://www.spmusiczone.com/login">Login</a>
+        </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <a href="https://www.sulexamusic.com/terms-and-condition">Terms & Conditions</a>
+          <a href="https://www.sulexamusic.com/privacy-policy">Privacy Policy</a>
+          <a href="https://www.sulexamusic.com/refund-policy">Refund Policy</a>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-credit">
+        © 2025 Playnex Digital. All rights reserved.
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true
+      });
+
+      function toggleMenu() {
+        const nav = document.getElementById("mobileMenu");
+        const btn = document.getElementById("menuToggle");
+        nav.classList.toggle("show");
+        btn.textContent = nav.classList.contains("show") ? "✕" : "☰";
+      }
+
+      window.addEventListener("scroll", () => {
+        const header = document.getElementById("siteHeader");
+        if (window.scrollY > 20) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      document.querySelectorAll("#mobileMenu a").forEach(link => {
+        link.addEventListener("click", () => {
+          document.getElementById("mobileMenu").classList.remove("show");
+          document.getElementById("menuToggle").textContent = "☰";
+        });
+      });
+    </script>
+
+  </body>
 </html>
