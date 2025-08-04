@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pricing | Playnex Digital</title>
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+      color: #fff;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: #444 #000;
+    }
+    body::-webkit-scrollbar { width: 10px; }
+    body::-webkit-scrollbar-track { background: #000; }
+    body::-webkit-scrollbar-thumb {
+      background-color: #444;
+      border-radius: 6px;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      backdrop-filter: blur(10px);
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 5vw;
+      border-bottom: 1px solid rgba(0, 221, 255, 0.2);
+    }
+
+    .logo img {
+      height: 74px;
+      max-width: 100%;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    nav a {
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover { color: #00ddff; }
+
+    .btn-login,
+    .btn-signup {
+      padding: 7px 16px;
+      font-weight: 500;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-login {
+      border: 1px solid #00ddff;
+      background: transparent;
+      color: #fff;
+    }
+
+    .btn-signup {
+      background: #00ddff;
+      color: #000;
+      border: none;
+    }
+
+    .btn-login:hover,
+    .btn-signup:hover {
+      transform: scale(1.05);
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 28px;
+      color: #fff;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+
+      nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100vw;
+        background: rgba(0, 0, 0, 0.95);
+        border-bottom: 1px solid rgba(0, 221, 255, 0.2);
+        max-height: 0;
+        overflow: hidden;
+        flex-direction: column;
+        opacity: 0;
+        transition: all 0.4s ease;
+        padding: 0;
+        align-items: center;
+      }
+
+      nav.show {
+        max-height: 100vh;
+        opacity: 1;
+        padding: 10px 0;
+      }
+
+      nav a {
+        margin: 1px 0;
+        font-size: 16px;
+      }
+
+      .btn-login,
+      .btn-signup {
+        width: 120px;
+        text-align: center;
+        padding: 8px;
+        margin: 5px 0;
+      }
+
+      .logo img {
+        height: 68px;
+      }
+    }
+
+    main {
+      padding-top: 100px;
+    }
+
+    /* PRICING CONTENT STARTS */
+    :root {
+      --primary: #00ddff;
+      --bg-dark: #111;
+      --text-light: #fff;
+      --text-muted: #aaa;
+      --card-border: #333;
+    }
+
+    .pricing-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    .plan-toggle {
+      text-align: center;
+      margin-top: 20px;
+      border-bottom: 2px solid #333;
+    }
+
+    .plan-toggle button {
+      padding: 10px 20px;
+      margin: 0 10px;
+      border: none;
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      background: #222;
+      color: #fff;
+      border-radius: 5px 5px 0 0;
+      text-transform: uppercase;
+      transition: 0.3s;
+    }
+
+    .plan-toggle button.active {
+      background: var(--primary);
+      color: #000;
+      font-weight: bold;
+    }
+
+    .pricing-section {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 30px 10px;
+      gap: 20px;
+    }
+
+    .pricing-section.active {
+      display: flex;
+    }
+
+    .pricing-card {
+      background-color: var(--bg-dark);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 20px;
+      width: 300px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 221, 255, 0.2);
+    }
+
+    .pricing-card h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      margin-bottom: 8px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .price {
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+      margin: 0;
+    }
+
+    .price span {
+      font-size: 14px;
+      color: var(--text-muted);
+    }
+
+    .features {
+      margin: 20px 0;
+    }
+
+    .features p {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      margin: 6px 0;
+    }
+
+    .features p::before {
+      content: "✔";
+      margin-right: 8px;
+    }
+
+    .true-blue::before { color: #00bbff; }
+    .true-green::before { color: #00ff66; }
+    .true-yellow::before { color: gold; }
+
+    .get-started {
+      margin-top: auto;
+      text-align: center;
+    }
+
+    .get-started a {
+      background-color: var(--primary);
+      color: #000;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+      display: inline-block;
+      transition: 0.3s ease;
+    }
+
+    .get-started a:hover {
+      background-color: #00bbdd;
+    }
+
+    @media (max-width: 768px) {
+      .pricing-section {
+        flex-direction: column;
+        align-items: center;
+      }
+      .pricing-card {
+        width: 100%;
+        max-width: 320px;
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="siteHeader">
+    <div class="logo">
+      <a href="/">
+        <img src="images/logo.png" alt="Playnex Digital Logo">
+      </a>
+    </div>
+    <button class="hamburger" id="menuToggle" onclick="toggleMenu()">☰</button>
+    <nav id="mobileMenu">
+      <a href="https://www.spmusiczone.com/sell-your-music">Sell Your Music</a>
+      <a href="https://www.spmusiczone.com/artist-services">Artist Services</a>
+      <a href="https://www.spmusiczone.com/pricing">Pricing</a>
+      <a href="https://www.spmusiczone.com/about-us">About Us</a>
+      <a href="https://www.spmusiczone.com/contact-us">Contact Us</a>
+      <a href="https://www.spmusiczone.com/login" class="btn-login">Login</a>
+      <a href="https://www.spmusiczone.com/signup" class="btn-signup">Sign Up</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="pricing-wrapper">
+      <div class="plan-toggle">
+        <button class="active" onclick="showPlans('artist')">Artist Plans</button>
+        <button onclick="showPlans('label')">Label Plans</button>
+      </div>
+
+      <!-- Artist Plans -->
+      <div id="artist" class="pricing-section active">
+        <!-- VIBE ARTIST -->
+        <div class="pricing-card">
+          <h3>VIBE ARTIST</h3>
+          <div class="price">FREE <span>/MONTH</span></div>
+          <div class="features">
+            <p class="true-blue">Single Artist</p>
+            <p class="true-blue">Upto 5 Tracks Per Month</p>
+            <p class="true-blue">70% Royalty</p>
+            <p class="true-blue">Release to all Digital Stores</p>
+            <p class="true-blue">No Annual Fees</p>
+            <p class="true-blue">Approval in 10 Days</p>
+            <p class="true-blue">Artist Help Center</p>
+            <p class="true-blue">Customer Support</p>
+          </div>
+          <div class="get-started">
+            <a href="https://spmusiczone.com/apply" target="_blank" data-plan="VIBE ARTIST" data-type="artist">GET STARTED</a>
+          </div>
+        </div>
+
+        <!-- RISE ARTIST -->
+        <div class="pricing-card">
+          <h3>RISE ARTIST</h3>
+          <div class="price">₹999 <span>/YEAR</span></div>
+          <div class="features">
+            <p class="true-green">Unlimited Releases</p>
+            <p class="true-green">80% Royalty</p>
+            <p class="true-green">Release to all Digital Stores</p>
+            <p class="true-green">No Annual Fees</p>
+            <p class="true-green">Approval in 5 Days</p>
+            <p class="true-green">Artist Help Center</p>
+            <p class="true-green">Social Media Monetization</p>
+            <p class="true-green">Instagram Linking</p>
+            <p class="true-green">Spotify Verification</p>
+            <p class="true-green">YouTube Content ID</p>
+            <p class="true-green">Customer Support</p>
+          </div>
+          <div class="get-started">
+            <a href="#" data-plan="RISE ARTIST" data-type="artist">GET STARTED</a>
+          </div>
+        </div>
+
+        <!-- STAR ARTIST -->
+        <div class="pricing-card">
+          <h3>STAR ARTIST</h3>
+          <div class="price">₹2,499 <span>/YEAR</span></div>
+          <div class="features">
+            <p class="true-yellow">Unlimited Releases</p>
+            <p class="true-yellow">90% Royalty</p>
+            <p class="true-yellow">Release to all Digital Stores</p>
+            <p class="true-yellow">No Annual Fees</p>
+            <p class="true-yellow">Approval in 3 Days</p>
+            <p class="true-yellow">Artist Help Center</p>
+            <p class="true-yellow">Social Media Monetization</p>
+            <p class="true-yellow">Instagram & Facebook Linking</p>
+            <p class="true-yellow">Spotify Verification</p>
+            <p class="true-yellow">YouTube Content ID</p>
+            <p class="true-yellow">YouTube Official Artist Channel</p>
+            <p class="true-yellow">Callertunes (CBRT)</p>
+            <p class="true-yellow">Playlist Pitching</p>
+            <p class="true-yellow">Custom Label Name</p>
+            <p class="true-yellow">Customer Support</p>
+          </div>
+          <div class="get-started">
+            <a href="#" data-plan="STAR ARTIST" data-type="artist">GET STARTED</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Label Plans -->
+      <div id="label" class="pricing-section">
+        <!-- LABEL FREE -->
+        <div class="pricing-card">
+          <h3>LABEL FREE</h3>
+          <div class="price">FREE <span>/YEAR</span></div>
+          <div class="features">
+            <p class="true-blue">Unlimited Artist</p>
+            <p class="true-blue">Unlimited Releases</p>
+            <p class="true-blue">70% Royalty</p>
+            <p class="true-blue">Release to all Digital Stores</p>
+            <p class="true-blue">Approval in 3–5 Days</p>
+            <p class="true-blue">Artist Help Center</p>
+            <p class="true-blue">Social Media Monetization</p>
+            <p class="true-blue">Instagram & Facebook Linking</p>
+            <p class="true-blue">Spotify Verification</p>
+            <p class="true-blue">YouTube Content ID</p>
+            <p class="true-blue">YouTube Official Artist Channel</p>
+            <p class="true-blue">Custom Label Name</p>
+            <p class="true-blue">Customer Support</p>
+          </div>
+          <div class="get-started">
+            <a href="https://spmusiczone.com/apply" target="_blank" data-plan="LABEL FREE" data-type="label">GET STARTED</a>
+          </div>
+        </div>
+
+        <!-- LABEL PLAN -->
+        <div class="pricing-card">
+          <h3>LABEL PLAN</h3>
+          <div class="price">₹4,499 <span>/YEAR</span></div>
+          <div class="features">
+            <p class="true-green">Unlimited Artist</p>
+            <p class="true-green">Unlimited Releases</p>
+            <p class="true-green">90% Royalty</p>
+            <p class="true-green">Release to all Digital Stores</p>
+            <p class="true-green">Approval in 3 Days</p>
+            <p class="true-green">Artist Help Center</p>
+            <p class="true-green">Social Media Monetization</p>
+            <p class="true-green">Instagram & Facebook Linking</p>
+            <p class="true-green">Spotify Verification</p>
+            <p class="true-green">YouTube Content ID</p>
+            <p class="true-green">YouTube Official Artist Channel</p>
+            <p class="true-green">Callertunes (CBRT)</p>
+            <p class="true-green">Playlist Pitching</p>
+            <p class="true-green">Custom Label Name</p>
+            <p class="true-green">Customer Support</p>
+          </div>
+          <div class="get-started">
+            <a href="#" data-plan="LABEL PLAN" data-type="label">GET STARTED</a>
+          </div>
+        </div>
+
+        <!-- AGGREGATOR -->
+        <div class="pricing-card">
+          <h3>AGGREGATOR PLAN</h3>
+          <div class="price">₹19,999 <span>/YEAR</span></div>
+          <div class="features">
+            <p class="true-yellow">Unlimited Label</p>
+            <p class="true-yellow">Unlimited Artist</p>
+            <p class="true-yellow">Unlimited Releases</p>
+            <p class="true-yellow">90% Royalty</p>
+            <p class="true-yellow">Release to all Digital Stores</p>
+            <p class="true-yellow">Approval in 3 Days</p>
+            <p class="true-yellow">Artist Help Center</p>
+            <p class="true-yellow">Social Media Monetization</p>
+            <p class="true-yellow">Instagram & Facebook Linking</p>
+            <p class="true-yellow">Spotify Verification</p>
+            <p class="true-yellow">YouTube Content ID</p>
+            <p class="true-yellow">YouTube Official Artist Channel</p>
+            <p class="true-yellow">Callertunes (CBRT)</p>
+            <p class="true-yellow">Playlist Pitching</p>
+            <p class="true-yellow">Custom Label Name</p>
+            <p class="true-yellow">Customer Support</p>
+          </div>
+          <div class="get-started">
+            <a href="#" data-plan="AGGREGATOR PLAN" data-type="label">GET STARTED</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer style="text-align: center; padding: 30px 10px; font-size: 14px; color: #aaa; border-top: 1px solid #222;">
+    &copy; 2025 Playnex Digital. All Rights Reserved.
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('mobileMenu');
+      nav.classList.toggle('show');
+    }
+
+    function showPlans(type) {
+      const artist = document.getElementById('artist');
+      const label = document.getElementById('label');
+      const buttons = document.querySelectorAll('.plan-toggle button');
+      buttons.forEach(btn => btn.classList.remove('active'));
+
+      if (type === 'artist') {
+        artist.classList.add('active');
+        label.classList.remove('active');
+        buttons[0].classList.add('active');
+      } else {
+        artist.classList.remove('active');
+        label.classList.add('active');
+        buttons[1].classList.add('active');
+      }
+    }
+
+    // Save selected plan to localStorage
+    document.querySelectorAll('.get-started a').forEach(link => {
+      link.addEventListener('click', e => {
+        const plan = link.getAttribute('data-plan');
+        const type = link.getAttribute('data-type');
+        localStorage.setItem('selectedPlan', JSON.stringify({ plan, type }));
+      });
+    });
+  </script>
+</body>
+</html>
