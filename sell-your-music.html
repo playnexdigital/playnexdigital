@@ -228,46 +228,136 @@
       .grid-4 { grid-template-columns: repeat(4, 1fr); }
     }
     footer {
-      background: #0d0d14;
-      color: #aaa;
-      padding: 40px 5vw 0;
-      font-size: 14px;
-    }
+  background: #0d0d14;
+  color: #aaa;
+  font-size: 14px;
+  margin-top: auto;
+}
 
-    .footer-container {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 60px;
-      text-align: left;
-    }
+.divider-line {
+  width: 90vw;
+  max-width: 1300px;
+  height: 0.5px;
+  background: rgba(255,255,255,0.1);
+  margin: 0 auto;
+}
 
-    .footer-column h4 {
-      font-size: 16px;
-      color: #fff;
-      margin-bottom: 15px;
-    }
+.footer-top {
+  padding: 35px 5vw 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
 
-    .footer-column a {
-      display: block;
-      font-size: 14px;
-      color: #aaa;
-      margin-bottom: 8px;
-      transition: color 0.3s ease;
-    }
+.footer-top img.logo {
+  height: 50px;
+  opacity: 0.6;
+  transform: translateY(8px);
+  margin-bottom: 12px;
+}
 
-    .footer-column a:hover {
-      color: #fff;
-    }
+.footer-social {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 14px;
+}
 
-    .footer-divider {
-      width: 100%;
-      height: 1px;
-      background: rgba(255,255,255,0.08);
-      margin: 30px 0 20px;
-    }
+.footer-social img {
+  width: 26px;
+  height: 26px;
+  filter: brightness(100%);
+  transition: 0.3s ease;
+}
+
+.footer-social img:hover {
+  filter: brightness(120%);
+}
+
+.footer-mid {
+  border-top: 0.5px solid rgba(255,255,255,0.1);
+  border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  padding: 22px 5vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 60px;
+  text-align: left;
+}
+
+.footer-column h4 {
+  font-size: 16px;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.footer-column a {
+  display: block;
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #fff;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-contact div {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.footer-contact img {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+}
+
+.footer-bottom {
+  padding: 14px 5vw 24px;
+  text-align: center;
+  border-top: 0.5px solid rgba(255,255,255,0.1);
+  font-size: 13px;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-start;
+    padding-top: 40px;
+    padding-bottom: 16px;
+  }
+
+  .footer-top img.logo {
+    margin-bottom: 16px;
+    transform: translateY(10px);
+  }
+
+  .footer-mid {
+    flex-direction: column;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .footer-social {
+    margin-bottom: 10px;
+  }
+
+  .divider-line {
+    width: 90vw;
+    margin: 0 auto;
+  }
 
     .footer-credit {
       text-align: center;
@@ -320,8 +410,8 @@
       <a href="https://www.spmusiczone.com/pricing">Pricing</a>
       <a href="https://www.spmusiczone.com/about-us">About Us</a>
       <a href="https://www.spmusiczone.com/contact-us">Contact Us</a>
-      <a href="https://www.spmusiczone.com/login" class="btn-login">Login</a>
-      <a href="https://www.spmusiczone.com/signup" class="btn-signup">Sign Up</a>
+      <a href="https://app.playtunemusic.com/login" class="btn-login">Login</a>
+      <a href="https://www.spmusiczone.com/" class="btn-signup">Sign Up</a>
     </nav>
   </header>
 
@@ -375,40 +465,73 @@
         <div class="grid-box">
           <h3>150+ Digital Stores</h3>
           <p>Spotify, Apple Music, YouTube Music, Amazon, Instagram & more.</p>
-          <div class="center-btn"><a href="#" class="btn">View All Stores</a></div>
-        </div>
-      </div>
-    </section>
+          <div class="center-btn"><a href="#" class="btn">View All Stores
   </main>
 
   <div class="footer-separator"></div>
 
-  <footer>
-    <div class="footer-container">
-      <div class="footer-column">
-        <h4>Company</h4>
-        <a href="https://www.spmusiczone.com/about-us">About Us</a>
-        <a href="https://www.spmusiczone.com/contact-us">Contact Us</a>
+  <!-- Footer Section -->
+<footer>
+  <!-- Top Section: Logo and Socials -->
+  <div class="footer-top">
+    <img src="images/logo.png" alt="Playnex Digital Logo" class="logo">
+    <div class="footer-social">
+      <a href="https://www.instagram.com/playnexdigital" target="_blank" aria-label="Instagram">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/instagram-new.png" alt="Instagram" />
+      </a>
+      <a href="https://www.youtube.com/PlaynexDigital" target="_blank" aria-label="YouTube">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/youtube-play.png" alt="YouTube" />
+      </a>
+      <a href="https://www.twitter.com/PlaynexDigital" target="_blank" aria-label="Twitter">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/twitter.png" alt="Twitter" />
+      </a>
+    </div>
+  </div>
+
+  <div class="divider-line"></div>
+
+  <!-- Middle Section: Info and Links -->
+  <div class="footer-mid">
+    <div class="footer-contact">
+      <div>
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" alt="Email" />
+        <span>infoplaynexdigital@gmail.com</span>
       </div>
-      <div class="footer-column">
-        <h4>Services</h4>
-        <a href="https://www.spmusiczone.com/sell-your-music">Sell Your Music</a>
-        <a href="https://www.spmusiczone.com/artist-services">Artist Services</a>
-        <a href="https://www.spmusiczone.com/signup">Sign Up</a>
-        <a href="https://www.spmusiczone.com/login">Login</a>
-      </div>
-      <div class="footer-column">
-        <h4>Legal</h4>
-        <a href="https://www.sulexamusic.com/terms-and-condition">Terms & Conditions</a>
-        <a href="https://www.sulexamusic.com/privacy-policy">Privacy Policy</a>
-        <a href="https://www.sulexamusic.com/refund-policy">Refund Policy</a>
+      <div>
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/marker.png" alt="Location" />
+        <span>Sujapur, Chamagaram, Kaliachak,<br>Nazirpur, Malda, West Bengal - 732206</span>
       </div>
     </div>
-    <div class="footer-divider"></div>
-    <div class="footer-credit">
-      © 2025 Playnex Digital. All rights reserved.
+
+    <div class="footer-column">
+      <h4>Company</h4>
+      <a href="#">About Us</a>
+      <a href="#">Contact Us</a>
     </div>
-  </footer>
+
+    <div class="footer-column">
+      <h4>Services</h4>
+      <a href="#">Sell Your Music</a>
+      <a href="#">Artist Services</a>
+      <a href="#">Sign Up</a>
+      <a href="#">Login</a>
+    </div>
+
+    <div class="footer-column">
+      <h4>Legal</h4>
+      <a href="#">Terms & Conditions</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Refund Policy</a>
+    </div>
+  </div>
+
+  <div class="divider-line"></div>
+
+  <!-- Bottom Section: Copyright -->
+  <div class="footer-bottom">
+    © 2025 Playnex Digital. All rights reserved.
+  </div>
+</footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
@@ -418,11 +541,11 @@
     });
 
     function toggleMenu() {
-      const nav = document.getElementById("mobileMenu");
-      const btn = document.getElementById("menuToggle");
-      nav.classList.toggle("show");
-      btn.textContent = nav.classList.contains("show") ? "✕" : "☰";
-    }
+    const nav = document.getElementById("mobileMenu");
+    const btn = document.getElementById("menuToggle");
+    nav.classList.toggle("show");
+    btn.textContent = nav.classList.contains("show") ? "✕" : "☰";
+  }
 
     window.addEventListener("scroll", () => {
       const header = document.getElementById("siteHeader");
@@ -434,11 +557,11 @@
     });
 
     document.querySelectorAll("#mobileMenu a").forEach(link => {
-      link.addEventListener("click", () => {
-        document.getElementById("mobileMenu").classList.remove("show");
-        document.getElementById("menuToggle").textContent = "☰";
+    link.addEventListener("click", () => {
+      document.getElementById("mobileMenu").classList.remove("show");
+      document.getElementById("menuToggle").textContent = "☰";
       });
     });
   </script>
 </body>
-</html>
+          </html>
