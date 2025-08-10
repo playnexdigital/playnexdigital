@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Playnex Digital</title>
-  <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+  <title>Sell Your Music | Playnex Digital</title>
+  <link rel="icon" href="images/favicon.png" type="image/favicon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
@@ -59,7 +59,7 @@ nav a {
   font-weight: 500;
   transition: all 0.3s ease;
 }
-/* Ye hover color for normal nav links (except buttons) */
+
 nav a:not(.btn-login):not(.btn-signup):hover {
   color: #00ddff;
 }
@@ -246,170 +246,153 @@ main {
   min-height: 300px;
 }
 
-/* Divider lines limited to max-width 1300px and centered */
-.footer-separator,
-.divider-line {
-  width: 100%;
-  max-width: 1300px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.1);
-}
-.footer-separator {
-  height: 1px;
-  margin-top: 60px;
-  background: rgba(255, 255, 255, 0.08);
-}
-.divider-line {
-  height: 0.5px;
-}
+    /* FOOTER */
+    .footer-separator,
+    .divider-line {
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .footer-separator {
+      height: 1px;
+      margin-top: 60px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .divider-line { height: 0.5px; }
 
-footer {
-  background: #0d0d14;
-  color: #aaa;
-  font-size: 14px;
-  margin-top: auto;
-  padding-bottom: 20px;
-  padding-top: 30px;
-  width: 100%;
-}
+    footer {
+      background: #0d0d14;
+      color: #aaa;
+      font-size: 14px;
+      margin-top: auto;
+      padding-bottom: 20px;
+      padding-top: 20px; /* reduced top padding */
+      width: 100%;
+    }
 
-.footer-top {
-  padding: 0 5vw 10px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  flex-wrap: wrap;
-  max-width: 1300px;
-  margin: 0 auto;
-}
-.footer-top img.logo {
-  height: 25px;
-  opacity: 0.6;
-  transform: translateY(8px);
-  margin-bottom: 12px;
-}
+    .footer-top {
+      padding: 12px 5vw 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      max-width: 1300px;
+      margin: 0 auto;
+      gap: 16px;
+    }
 
-.footer-social {
-  display: flex;
-  gap: 18px;
-  margin-bottom: 14px;
-}
-.footer-social img {
-  width: 26px;
-  height: 26px;
-  filter: brightness(100%);
-  transition: 0.3s ease;
-}
-.footer-social img:hover {
-  filter: brightness(120%);
-}
+    .footer-top img.logo {
+      height: 25px;
+      max-width: 100%;
+      filter: none;
+      opacity: 1;
+      margin-bottom: 12px;
+      margin-top: 12px;
+    }
+    .footer-social {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 14px;
+    }
+    .footer-social img {
+      width: 26px;
+      height: 26px;
+      filter: brightness(100%);
+      transition: 0.3s ease;
+    }
+    .footer-social img:hover { filter: brightness(120%); }
+    .footer-mid {
+      border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+      padding: 22px 5vw;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 60px;
+      text-align: left;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    .footer-column h4 {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+    .footer-column a {
+      display: block;
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 6px;
+      transition: color 0.3s ease;
+    }
+    .footer-column a:hover { color: #fff; }
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer-contact div {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .footer-contact img {
+      width: 18px;
+      height: 18px;
+      margin-top: 3px;
+    }
+    .footer-bottom {
+      padding: 14px 5vw 24px;
+      text-align: center;
+      border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+      font-size: 13px;
+      color: #fff;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+    @media (max-width: 768px) {
+      .footer-top {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+        padding-top: 20px;
+        padding-bottom: 16px;
+      }
 
-.footer-mid {
-  border-top: 0.5px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
-  padding: 22px 5vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 60px;
-  text-align: left;
-  max-width: 1300px;
-  margin: 0 auto;
-}
+      .footer-top img.logo {
+        height: 25px;
+        margin-top: 12px;
+        margin-bottom: 12px;
+      }
+      .footer-mid {
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
+      }
+      .footer-social { margin-bottom: 10px; }
+    }
 
-.footer-column h4 {
-  font-size: 16px;
-  color: #fff;
-  margin-bottom: 12px;
-}
-.footer-column a {
-  display: block;
-  font-size: 14px;
-  color: #aaa;
-  margin-bottom: 6px;
-  transition: color 0.3s ease;
-}
-.footer-column a:hover {
-  color: #fff;
-}
-
-.footer-contact {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.footer-contact div {
-  display: flex;
-  align-items: flex-start;
-  gap: 8px;
-}
-.footer-contact img {
-  width: 18px;
-  height: 18px;
-  margin-top: 3px;
-}
-
-.footer-bottom {
-  padding: 14px 5vw 24px;
-  text-align: center;
-  border-top: 0.5px solid rgba(255, 255, 255, 0.1);
-  font-size: 13px;
-  color: #fff;
-  max-width: 1300px;
-  margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-  .footer-top {
-    flex-direction: column;
-    gap: 16px;
-    align-items: flex-start;
-    padding-top: 40px;
-    padding-bottom: 16px;
-  }
-  .footer-top img.logo {
-    margin-bottom: 16px;
-    transform: translateY(10px);
-  }
-  .footer-mid {
-    flex-direction: column;
-    gap: 24px;
-    align-items: flex-start;
-  }
-  .footer-social {
-    margin-bottom: 10px;
-  }
-}
-
-/* WhatsApp Button */
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25d366;
-  border-radius: 50%;
-  padding: 10px;
-  box-shadow: none;
-  z-index: 1000;
-  transition: transform 0.2s ease;
-}
-.whatsapp-float img {
-  width: 36px;
-  height: 36px;
-  display: block;
-}
-.whatsapp-float:hover {
-  transform: scale(1.05);
-}
-
+    /* WhatsApp Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25d366;
+      border-radius: 50%;
+      padding: 10px;
+      box-shadow: none;
+      z-index: 1000;
+      transition: transform 0.2s ease;
+    }
+    .whatsapp-float img { width: 36px; height: 36px; display: block; }
+    .whatsapp-float:hover { transform: scale(1.05); }
   </style>
 </head>
 <body>
   <header id="siteHeader">
     <div class="logo">
-      <a href="/">
-        <img src="images/logo.png" alt="Playnex Digital Logo" />
-      </a>
+      <a href="/"><img src="images/logo.png" alt="Playnex Digital Logo" /></a>
     </div>
     <button class="hamburger" id="menuToggle" onclick="toggleMenu()">☰</button>
     <nav id="mobileMenu">
@@ -419,11 +402,11 @@ footer {
       <a href="https://spmusiczone.com/about-us">About Us</a>
       <a href="https://spmusiczone.com/contact-us">Contact Us</a>
       <a href="https://app.playtunemusic.com/login" class="btn-login">Login</a>
-      <a href="https://spmusiczone.com/signup" class="btn-signup">Sign Up</a>
+      <a href="#" class="btn-signup">Sign Up</a>
     </nav>
   </header>
 
-  <main>
+<main>
 
 <section data-aos="fade-up">
     <h1>Sell <span>Your Music</span> Online</h1>
@@ -480,24 +463,17 @@ footer {
   </section>
 
   </main>
+
   <div class="footer-separator"></div>
 
   <footer>
     <div class="footer-top">
       <img src="images/logo.png" alt="Playnex Digital Logo" class="logo" />
       <div class="footer-social">
-        <a href="https://www.instagram.com/playnexdigital"
-          ><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram"
-        /></a>
-        <a href="https://www.youtube.com/PlaynexDigital"
-          ><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube"
-        /></a>
-        <a href="https://www.facebook.com/PlaynexDigital"
-          ><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"
-        /></a>
-        <a href="https://www.twitter.com/PlaynexDigital"
-          ><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter"
-        /></a>
+        <a href="https://www.instagram.com/playnexdigital"><img src="https://cdn-icons-png.flaticon.com/512/733/733558.png" alt="Instagram" /></a>
+        <a href="https://www.youtube.com/PlaynexDigital"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube" /></a>
+        <a href="https://www.facebook.com/PlaynexDigital"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
+        <a href="https://www.twitter.com/PlaynexDigital"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" /></a>
       </div>
     </div>
 
@@ -505,14 +481,8 @@ footer {
 
     <div class="footer-mid">
       <div class="footer-contact">
-        <div>
-          <img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" />
-          <span>infoplaynexdigital@gmail.com</span>
-        </div>
-        <div>
-          <img src="https://img.icons8.com/ios-filled/50/ffffff/marker.png" />
-          <span>Rampur, Uttar Pradesh - 244901</span>
-        </div>
+        <div><img src="https://img.icons8.com/ios-filled/50/ffffff/new-post.png" /><span>infoplaynexdigital@gmail.com</span></div>
+        <div><img src="https://img.icons8.com/ios-filled/50/ffffff/marker.png" /><span>Rampur, Uttar Pradesh - 244901</span></div>
       </div>
       <div class="footer-column">
         <h4>Company</h4>
@@ -523,7 +493,7 @@ footer {
         <h4>Services</h4>
         <a href="https://spmusiczone.com/sell-your-music">Sell Your Music</a>
         <a href="https://spmusiczone.com/artist-services">Artist Services</a>
-        <a href="https://spmusiczone.com/signup">Sign Up</a>
+        <a href="#">Sign Up</a>
         <a href="https://app.playtunemusic.com/login">Login</a>
       </div>
       <div class="footer-column">
@@ -551,10 +521,8 @@ footer {
   </script>
 
   <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/919391212790" target="_blank" class="whatsapp-float"
-    ><img
-      src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-      alt="WhatsApp"
-  /></a>
+  <a href="https://wa.me/917679585695" target="_blank" class="whatsapp-float" aria-label="WhatsApp Chat">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+  </a>
 </body>
 </html>
