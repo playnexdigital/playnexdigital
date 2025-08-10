@@ -49,6 +49,8 @@
     .logo img {
       height: 60px; /* smaller logo height */
       max-width: 100%;
+      filter: none; /* ensure full color */
+      opacity: 1; /* full opacity */
     }
     nav {
       display: flex;
@@ -102,7 +104,12 @@
         padding: 8px;
         margin: 5px 0;
       }
-      .logo img { height: 54px; }
+      .logo img {
+        height: 60px; /* mobile header logo size matched to footer logo */
+        max-width: 100%;
+        filter: none; /* full color */
+        opacity: 1;
+      }
     }
 
     /* FOOTER */
@@ -119,31 +126,35 @@
       background: rgba(255, 255, 255, 0.08);
     }
     .divider-line { height: 0.5px; }
+
     footer {
       background: #0d0d14;
       color: #aaa;
       font-size: 14px;
       margin-top: auto;
       padding-bottom: 20px;
-      padding-top: 30px;
+      padding-top: 20px; /* reduced top padding */
       width: 100%;
     }
+
     .footer-top {
-      padding: 0 5vw 10px;
+      padding: 12px 5vw 12px; /* reduced top and bottom padding */
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       flex-wrap: wrap;
       max-width: 1300px;
       margin: 0 auto;
+      gap: 16px;
     }
-    /* Footer logo same as header logo */
+    /* Footer logo same size as header, full color */
     .footer-top img.logo {
-      height: 60px; /* same as header logo */
+      height: 60px;
       max-width: 100%;
-      opacity: 1; /* removed faded effect */
-      transform: none;
+      filter: none; /* full color */
+      opacity: 1; /* full opacity */
       margin-bottom: 12px;
+      margin-top: 12px; /* added same top margin as bottom */
     }
     .footer-social {
       display: flex;
@@ -211,8 +222,14 @@
         flex-direction: column;
         gap: 16px;
         align-items: flex-start;
-        padding-top: 40px;
+        padding-top: 20px;  /* reduced top padding for mobile */
         padding-bottom: 16px;
+      }
+      /* Make footer logo and header logo same size on mobile */
+      .footer-top img.logo {
+        height: 60px;
+        margin-top: 12px;
+        margin-bottom: 12px;
       }
       .footer-mid {
         flex-direction: column;
@@ -312,7 +329,7 @@
   </script>
 
   <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/917679585695" target="_blank" class="whatsapp-float">
+  <a href="https://wa.me/917679585695" target="_blank" class="whatsapp-float" aria-label="WhatsApp Chat">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
   </a>
 </body>
